@@ -1,8 +1,8 @@
 const nodemailer = require("nodemailer");
 var express = require('express')
 const app = express()
-port = process.env.PORT
-password = process.env.email.pass
+var port = process.env.PORT
+var password = process.env.PASS
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
