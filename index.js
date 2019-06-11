@@ -33,7 +33,6 @@ app.post('/sendEmail',function(req,res){
        const optionsBody = req.body
        var mailOptions = {
 
-              from: optionsBody.from, // sender address (who sends)
               to:  optionsBody.to, // list of receivers (who receives)
               subject:  optionsBody.subject, // Subject lineA
               text: optionsBody.text,
