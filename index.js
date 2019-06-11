@@ -10,16 +10,16 @@ const password = process.env.PASS
 var express = require('express')
 app.get('/', (req, res) => res.send('Hello!'))
 
-app.listen(port,() => console.log(`Example app listening on port!`))
+app.listen(port, () => console.log(`Example app listening on port!`))
 
 var smtpConfig = {
-    host: 'smtp.gmail.com',
-    port: 465,
-    auth:{
-       user: email,
-       pass: password
-    }
-}; 
+       host: 'smtp.gmail.com',
+       port: 465,
+       auth: {
+              user: email,
+              pass: password
+       }
+};
 var transporter = nodemailer.createTransport(smtpConfig);
 var defaultMailOptions = {
 
@@ -29,33 +29,33 @@ var defaultMailOptions = {
 
 };
 
-app.post('/sendEmail',function(req,res){
+app.post('/sendEmail', function (req, res) {
        const optionsBody = req.body
        var mailOptions = {
 
-              to:  optionsBody.to, // list of receivers (who receives)
-              subject:  optionsBody.subject, // Subject lineA
+              to: optionsBody.to, // list of receivers (who receives)
+              subject: optionsBody.subject, // Subject lineA
               text: optionsBody.text,
-             
+
               html: "<b>Hello world?</b>"
        };
-       transporter.sendMail(mailOptions, function(error) {
-              if(error){
+       transporter.sendMail(mailOptions, function (error) {
+              if (error) {
                      res.send(error)
               } else {
                      res.send('email sent!' + mailOptions)
               }
-       
+       });
 });
+
 
 app.get('/test', function (req, res) {
-         // send mail with defined transport object
- transporter.sendMail(defaultMailOptions, function(error) {
-       if(error){
-              res.send(error)
-       } else {
-              res.send('hello correct')
-       }
-});
-
-});
+       // send mail with defined transport object
+       transporter.sendMail(defaultMailOptions, function (error) {
+              if (error) {
+                     res.send(error)
+              } else {
+                     res.send('hello correct')
+              }
+       });
+})
