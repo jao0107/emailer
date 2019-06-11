@@ -25,7 +25,7 @@ app.get('/start', function (req, res) {
          // send mail with defined transport object
  transporter.sendMail(mailOptions, function(error) {
        if(error){
-              res.send('hello error')
+              res.send(error)
        } else {
               res.send('hello correct')
        }
