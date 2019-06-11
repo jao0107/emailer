@@ -1,13 +1,12 @@
 const nodemailer = require("nodemailer");
 
 const body = require('body-parser')
-const app = express()
+
 const port = process.env.PORT
 const email = process.env.EMAIL
 const password = process.env.PASS
-
-
 var express = require('express')
+const app = express()
 app.get('/', (req, res) => res.send('Hello!'))
 
 app.listen(port, () => console.log(`Example app listening on port!`))
