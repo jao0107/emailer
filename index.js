@@ -1,7 +1,8 @@
 const nodemailer = require("nodemailer");
 var express = require('express')
 const app = express()
-port = process.env.PORT || 80
+port = process.env.PORT
+password = process.env.email.pass
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
@@ -9,7 +10,11 @@ app.listen(port,() => console.log(`Example app listening on port!`))
 
 var smtpConfig = {
     host: 'smtp.gmail.com',
-    port: 465
+    port: 465,
+    auth:{
+       user: 'joshua.a.t.tabilog@gmail.com',
+       pass: password
+    }
 }; 
 var transporter = nodemailer.createTransport(smtpConfig);
 var mailOptions = {
