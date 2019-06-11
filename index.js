@@ -1,12 +1,17 @@
 const nodemailer = require("nodemailer");
 
-const body = require('body-parser')
+const bodyParser = require('body-parser')
 
 const port = process.env.PORT
 const email = process.env.EMAIL
 const password = process.env.PASS
 var express = require('express')
 const app = express()
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.send('Hello!'))
 
 app.listen(port, () => console.log(`Example app listening on port!`))
@@ -35,7 +40,6 @@ app.post('/sendEmail', function (req, res) {
               to: optionsBody.to, // list of receivers (who receives)
               subject: optionsBody.subject, // Subject lineA
               text: optionsBody.text,
-
               html: "<b>Hello world?</b>"
        };
        transporter.sendMail(mailOptions, function (error) {
