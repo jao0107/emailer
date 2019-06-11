@@ -1,11 +1,16 @@
 const nodemailer = require("nodemailer");
 var express = require('express')
-var app = express()
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 var smtpConfig = {
     host: 'smtp.gmail.com',
     port: 465
-};
+}; 
 var transporter = nodemailer.createTransport(smtpConfig);
 var mailOptions = {
 
@@ -24,7 +29,6 @@ app.get('/start', function (req, res) {
        } else {
               res.send('hello correct')
        }
-       done();
 });
 
 });
