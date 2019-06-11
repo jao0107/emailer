@@ -2,9 +2,6 @@ const nodemailer = require("nodemailer");
 var express = require('express')
 var app = express()
 
-
-let testAccount = await nodemailer.createTestAccount();
-
 var smtpConfig = {
     host: 'smtp.gmail.com',
     port: 465
