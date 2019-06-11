@@ -1,8 +1,9 @@
 const nodemailer = require("nodemailer");
 var express = require('express')
 const app = express()
-var port = process.env.PORT
-var password = process.env.PASS
+const port = process.env.PORT
+const email = process.env.EMAIL
+const password = process.env.PASS
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
@@ -12,7 +13,7 @@ var smtpConfig = {
     host: 'smtp.gmail.com',
     port: 465,
     auth:{
-       user: 'joshua.a.t.tabilog@gmail.com',
+       user: email,
        pass: password
     }
 }; 
