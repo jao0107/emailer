@@ -39,14 +39,13 @@ app.post('/sendEmail', function (req, res) {
 
               to: optionsBody.to, // list of receivers (who receives)
               subject: optionsBody.subject, // Subject lineA
-              text: optionsBody.text,
-              html: "<b>Hello world?</b>"
+              text: optionsBody.text
        };
        transporter.sendMail(mailOptions, function (error) {
               if (error) {
                      res.send(error)
               } else {
-                     res.send('email sent!' + mailOptions)
+                     res.send('email sent!')
               }
        });
 });
